@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AmplifyConsoleHosting default 1`] = `
+Object {
+  "Resources": Object {
+    "hosting9EC7671B": Object {
+      "Properties": Object {
+        "AutoBranchCreationConfig": Object {
+          "AutoBranchCreationPatterns": Array [
+            "master",
+            "main",
+            "feature/deploy*",
+          ],
+          "EnableAutoBranchCreation": true,
+          "EnableAutoBuild": true,
+          "EnablePullRequestPreview": false,
+        },
+        "BasicAuthConfig": Object {
+          "EnableBasicAuth": true,
+          "Password": "{{resolve:secretsmanager:test-secret-id:SecretString:::}}",
+          "Username": "test-user-name",
+        },
+        "BuildSpec": "{
+  \\"version\\": 1,
+  \\"frontend\\": {
+    \\"phases\\": {
+      \\"preBuild\\": {
+        \\"commands\\": [
+          \\"env\\"
+        ]
+      },
+      \\"build\\": {
+        \\"commands\\": [
+          \\"env\\"
+        ]
+      },
+      \\"postBuild\\": {
+        \\"commands\\": [
+          \\"env\\"
+        ]
+      }
+    },
+    \\"artifacts\\": {
+      \\"baseDirectory\\": \\"./\\",
+      \\"files\\": [
+        \\"**/*\\"
+      ]
+    },
+    \\"cache\\": {
+      \\"paths\\": [
+        \\"node_modules/**/*\\"
+      ]
+    },
+    \\"customHeaders\\": [
+      {
+        \\"pattern\\": \\"**/*\\",
+        \\"headers\\": [
+          {
+            \\"key\\": \\"Strict-Transport-Security\\",
+            \\"value\\": \\"max-age=31536000; includeSubDomains\\"
+          },
+          {
+            \\"key\\": \\"X-Frame-Options\\",
+            \\"value\\": \\"DENY\\"
+          },
+          {
+            \\"key\\": \\"X-XSS-Protection\\",
+            \\"value\\": \\"1; mode=block\\"
+          },
+          {
+            \\"key\\": \\"X-Content-Type-Options\\",
+            \\"value\\": \\"nosniff\\"
+          }
+        ]
+      }
+    ]
+  }
+}",
+        "CustomRules": Array [
+          Object {
+            "Source": "</^[^.]+$|\\\\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf|map|json)$)([^.]+$)/>",
+            "Status": "200",
+            "Target": "/index.html",
+          },
+        ],
+        "IAMServiceRole": Object {
+          "Fn::GetAtt": Array [
+            "hostingRoleD1A40E44",
+            "Arn",
+          ],
+        },
+        "Name": "test-app",
+        "OauthToken": "{{resolve:secretsmanager:test-secret-id:SecretString:::}}",
+        "Repository": "https://github.com/test-owner/test-repo",
+      },
+      "Type": "AWS::Amplify::App",
+    },
+    "hostingRoleD1A40E44": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "amplify.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+  },
+}
+`;
