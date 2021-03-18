@@ -6,24 +6,24 @@ type IsBasicAuth = boolean;
 type BasicAuthSecretId<T> = T extends true ? string : never;
 type BasicAuthUserName<T> = T extends true ? string : never;
 
-export interface AmplifyConsoleForSpaProps {
-  amplifyAppName: string;
-  isBasicAuth: IsBasicAuth;
-  basicAuthSecretId: BasicAuthSecretId<IsBasicAuth>;
-  basicAuthUserName: BasicAuthUserName<IsBasicAuth>;
-  githubTokenSecretId: string;
-  githubOwner: string;
-  githubRepo: string;
-  isAutoBuild: boolean;
-  preBuildCommands: string[];
-  buildCommands: string[];
-  baseDirectory: string;
+export interface IAmplifyConsoleForSpaProps {
+  readonly amplifyAppName: string;
+  readonly isBasicAuth: IsBasicAuth;
+  readonly basicAuthSecretId: BasicAuthSecretId<IsBasicAuth>;
+  readonly basicAuthUserName: BasicAuthUserName<IsBasicAuth>;
+  readonly githubTokenSecretId: string;
+  readonly githubOwner: string;
+  readonly githubRepo: string;
+  readonly isAutoBuild: boolean;
+  readonly preBuildCommands: string[];
+  readonly buildCommands: string[];
+  readonly baseDirectory: string;
 }
 
 export class AmplifyConsoleForSpa extends cdk.Construct {
   public amplify: amplify.App;
 
-  constructor(scope: cdk.Construct, id: string, props: AmplifyConsoleForSpaProps) {
+  constructor(scope: cdk.Construct, id: string, props: IAmplifyConsoleForSpaProps) {
     super(scope, id);
 
     this.amplify = new amplify.App(this, id, {
@@ -76,8 +76,7 @@ export class AmplifyConsoleForSpa extends cdk.Construct {
       },
       customRules: [
         {
-          source:
-                        '</^[^.]+$|\\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf|map|json)$)([^.]+$)/>',
+          source: '</^[^.]+$|\\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf|map|json)$)([^.]+$)/>',
           target: '/index.html',
           status: amplify.RedirectStatus.REWRITE,
         },

@@ -1,7 +1,7 @@
 import * as iam from '@aws-cdk/aws-iam';
 import * as cdk from '@aws-cdk/core';
 
-export interface S3BucketReplicationIamRoleProps {
+export interface IS3BucketReplicationIamRoleProps {
   roleName: string;
   baseBucketArn: string;
   sourceBucketArn: string;
@@ -10,7 +10,7 @@ export interface S3BucketReplicationIamRoleProps {
 export class S3BucketReplicationIamRole extends cdk.Construct {
   public replicationRole: iam.Role;
 
-  constructor(scope: cdk.Construct, id: string, props: S3BucketReplicationIamRoleProps) {
+  constructor(scope: cdk.Construct, id: string, props: IS3BucketReplicationIamRoleProps) {
     super(scope, id);
 
     this.replicationRole = new iam.Role(this, id, {
