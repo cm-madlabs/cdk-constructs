@@ -5,15 +5,18 @@ const project = new AwsCdkConstructLibrary({
   authorAddress: 'sato.naoya@classmethod.jp',
   cdkVersion: '1.94.1',
   defaultReleaseBranch: 'main',
-  jsiiFqn: "projen.AwsCdkConstructLibrary",
+  jsiiFqn: 'projen.AwsCdkConstructLibrary',
   name: 'cdk-constructs',
   repositoryUrl: 'https://github.com/cm-madlabs/cdk-constructs.git',
   cdkAssert: true,
   cdkDependencies: [
-      '@aws-cdk/core',
-      '@aws-cdk/aws-amplify',
-      '@aws-cdk/aws-codebuild'
-  ]
+    '@aws-cdk/core',
+    '@aws-cdk/aws-amplify',
+    '@aws-cdk/aws-codebuild',
+    '@aws-cdk/aws-logs',
+    '@aws-cdk/aws-apigateway',
+      '@aws-cdk/aws-iam'
+  ],
 
   /* AwsCdkConstructLibraryOptions */
   // cdkAssert: true,                                                          /* Install the @aws-cdk/assert library? */

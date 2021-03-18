@@ -52,13 +52,19 @@
   },
   "peerDependencies": {
     "@aws-cdk/aws-amplify": "^1.94.1",
+    "@aws-cdk/aws-apigateway": "^1.94.1",
     "@aws-cdk/aws-codebuild": "^1.94.1",
+    "@aws-cdk/aws-iam": "^1.94.1",
+    "@aws-cdk/aws-logs": "^1.94.1",
     "@aws-cdk/core": "^1.94.1",
     "constructs": "^3.2.27"
   },
   "dependencies": {
     "@aws-cdk/aws-amplify": "^1.94.1",
+    "@aws-cdk/aws-apigateway": "^1.94.1",
     "@aws-cdk/aws-codebuild": "^1.94.1",
+    "@aws-cdk/aws-iam": "^1.94.1",
+    "@aws-cdk/aws-logs": "^1.94.1",
     "@aws-cdk/core": "^1.94.1"
   },
   "bundledDependencies": [],

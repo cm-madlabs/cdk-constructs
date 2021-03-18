@@ -91,7 +91,22 @@
       "type": "peer"
     },
     {
+      "name": "@aws-cdk/aws-apigateway",
+      "version": "^1.94.1",
+      "type": "peer"
+    },
+    {
       "name": "@aws-cdk/aws-codebuild",
+      "version": "^1.94.1",
+      "type": "peer"
+    },
+    {
+      "name": "@aws-cdk/aws-iam",
+      "version": "^1.94.1",
+      "type": "peer"
+    },
+    {
+      "name": "@aws-cdk/aws-logs",
       "version": "^1.94.1",
       "type": "peer"
     },
@@ -111,7 +126,22 @@
       "type": "runtime"
     },
     {
+      "name": "@aws-cdk/aws-apigateway",
+      "version": "^1.94.1",
+      "type": "runtime"
+    },
+    {
       "name": "@aws-cdk/aws-codebuild",
+      "version": "^1.94.1",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-cdk/aws-iam",
+      "version": "^1.94.1",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-cdk/aws-logs",
       "version": "^1.94.1",
       "type": "runtime"
     },
