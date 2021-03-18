@@ -10,6 +10,10 @@
       "type": "build"
     },
     {
+      "name": "@types/jsonwebtoken",
+      "type": "build"
+    },
+    {
       "name": "@types/node",
       "version": "^10.17.0",
       "type": "build"
@@ -148,6 +152,14 @@
     {
       "name": "@aws-cdk/core",
       "version": "^1.94.1",
+      "type": "runtime"
+    },
+    {
+      "name": "jsonwebtoken",
+      "type": "runtime"
+    },
+    {
+      "name": "jwks-rsa",
       "type": "runtime"
     }
   ],

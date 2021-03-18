@@ -17,6 +17,13 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/aws-apigateway',
     '@aws-cdk/aws-iam',
   ],
+  deps: [
+      'jsonwebtoken',
+    'jwks-rsa',
+  ],
+  devDeps: [
+      '@types/jsonwebtoken'
+  ]
 
   /* AwsCdkConstructLibraryOptions */
   // cdkAssert: true,                                                          /* Install the @aws-cdk/assert library? */
