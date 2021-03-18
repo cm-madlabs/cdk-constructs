@@ -15,7 +15,7 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/aws-codebuild',
     '@aws-cdk/aws-logs',
     '@aws-cdk/aws-apigateway',
-      '@aws-cdk/aws-iam'
+    '@aws-cdk/aws-iam',
   ],
 
   /* AwsCdkConstructLibraryOptions */

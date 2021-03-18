@@ -1,37 +1,37 @@
-import * as cdk from '@aws-cdk/core';
 import * as apiGateway from '@aws-cdk/aws-apigateway';
 import * as logs from '@aws-cdk/aws-logs';
+import * as cdk from '@aws-cdk/core';
 
 export interface ApiGatewayRestApiProps {
-    apiName: string;
+  apiName: string;
 }
 
 export class ApiGatewayRestApi extends cdk.Construct {
-    public api: apiGateway.RestApi;
+  public api: apiGateway.RestApi;
 
-    constructor(scope: cdk.Construct, id: string, props: ApiGatewayRestApiProps) {
-        super(scope, id);
+  constructor(scope: cdk.Construct, id: string, props: ApiGatewayRestApiProps) {
+    super(scope, id);
 
-        this.api = new apiGateway.RestApi(this, id, {
-            restApiName: props.apiName,
-            endpointConfiguration: {
-                types: [apiGateway.EndpointType.REGIONAL],
-            },
-            deployOptions: {
-                accessLogDestination: new apiGateway.LogGroupLogDestination(
-                    new logs.LogGroup(this, `${id}-ApiLogGroup`),
-                ),
-                accessLogFormat: apiGateway.AccessLogFormat.jsonWithStandardFields(),
-                loggingLevel: apiGateway.MethodLoggingLevel.ERROR,
-                metricsEnabled: true,
-                stageName: 'v1',
-                tracingEnabled: true,
-            },
-            defaultCorsPreflightOptions: {
-                allowOrigins: apiGateway.Cors.ALL_ORIGINS,
-                allowMethods: apiGateway.Cors.ALL_METHODS,
-                allowCredentials: true,
-            },
-        });
-    }
+    this.api = new apiGateway.RestApi(this, id, {
+      restApiName: props.apiName,
+      endpointConfiguration: {
+        types: [apiGateway.EndpointType.REGIONAL],
+      },
+      deployOptions: {
+        accessLogDestination: new apiGateway.LogGroupLogDestination(
+          new logs.LogGroup(this, `${id}-ApiLogGroup`),
+        ),
+        accessLogFormat: apiGateway.AccessLogFormat.jsonWithStandardFields(),
+        loggingLevel: apiGateway.MethodLoggingLevel.ERROR,
+        metricsEnabled: true,
+        stageName: 'v1',
+        tracingEnabled: true,
+      },
+      defaultCorsPreflightOptions: {
+        allowOrigins: apiGateway.Cors.ALL_ORIGINS,
+        allowMethods: apiGateway.Cors.ALL_METHODS,
+        allowCredentials: true,
+      },
+    });
+  }
 }
