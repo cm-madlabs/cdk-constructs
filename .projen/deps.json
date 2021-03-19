@@ -27,6 +27,10 @@
       "type": "build"
     },
     {
+      "name": "esbuild",
+      "type": "build"
+    },
+    {
       "name": "eslint",
       "type": "build"
     },
@@ -90,6 +94,14 @@
       "type": "build"
     },
     {
+      "name": "jsonwebtoken",
+      "type": "bundled"
+    },
+    {
+      "name": "jwks-rsa",
+      "type": "bundled"
+    },
+    {
       "name": "@aws-cdk/aws-amplify",
       "version": "^1.94.1",
       "type": "peer"
@@ -106,6 +118,16 @@
     },
     {
       "name": "@aws-cdk/aws-iam",
+      "version": "^1.94.1",
+      "type": "peer"
+    },
+    {
+      "name": "@aws-cdk/aws-lambda-nodejs",
+      "version": "^1.94.1",
+      "type": "peer"
+    },
+    {
+      "name": "@aws-cdk/aws-lambda",
       "version": "^1.94.1",
       "type": "peer"
     },
@@ -145,6 +167,16 @@
       "type": "runtime"
     },
     {
+      "name": "@aws-cdk/aws-lambda-nodejs",
+      "version": "^1.94.1",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-cdk/aws-lambda",
+      "version": "^1.94.1",
+      "type": "runtime"
+    },
+    {
       "name": "@aws-cdk/aws-logs",
       "version": "^1.94.1",
       "type": "runtime"
@@ -152,14 +184,6 @@
     {
       "name": "@aws-cdk/core",
       "version": "^1.94.1",
-      "type": "runtime"
-    },
-    {
-      "name": "jsonwebtoken",
-      "type": "runtime"
-    },
-    {
-      "name": "jwks-rsa",
       "type": "runtime"
     }
   ],

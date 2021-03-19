@@ -1,176 +1,155 @@
+import { promisify } from 'util';
 import {
-    decode,
-    JsonWebTokenError,
-    TokenExpiredError,
-    verify,
+  decode,
+  TokenExpiredError,
+  verify,
 } from 'jsonwebtoken';
+
+import { JwksClient, CertSigningKey, RsaSigningKey } from 'jwks-rsa';
 import {
-    ExpiredAuthTokenApiGwError,
-    InvalidAuthHeaderError,
-    InvalidAuthHeaderNotFoundError,
-    InvalidAuthTokenApiGwError,
-    UnauthorizedApiGwError, VerifyTokenError,
+  ExpiredAuthTokenApiGwError,
+  InvalidAuthTokenApiGwError,
+  UnauthorizedApiGwError,
 } from './jwt-authorizer-error';
 
-import * as jwksClient from 'jwks-rsa';
-import { CertSigningKey, RsaSigningKey } from 'jwks-rsa';
-import { promisify } from 'util';
-
 export type ValidToken = {
-    aud: string[];
-    azp: string;
-    exp: number;
-    gty: string;
-    iat: number;
-    iss: string;
-    sub: string;
-    scope: string;
-    permissions: string[];
-};
-
-export type OidcInfo = {
-    jwksUrl: string;
-    audience: string;
-    issuer: string;
+  aud: string[];
+  azp: string;
+  exp: number;
+  gty: string;
+  iat: number;
+  iss: string;
+  sub: string;
+  scope: string;
+  permissions: string[];
 };
 
 export type LambdaAuthorizerEvent = {
-    type: 'TOKEN';
-    methodArn: string;
-    authorizationToken: string;
+  type: 'TOKEN';
+  methodArn: string;
+  authorizationToken: string;
 };
 
 export type Statement = {
-    Action: string;
-    Effect: string;
-    Resource: string;
+  Action: string;
+  Effect: string;
+  Resource: string;
 };
 
 export type LambdaAuthorizerResponse = {
-    principalId: string;
-    policyDocument: {
-        Version: string;
-        Statement: Statement[];
-    };
-    context: any;
+  principalId: string;
+  policyDocument: {
+    Version: string;
+    Statement: Statement[];
+  };
+  context: any;
 };
 
+// OIDC
+const jwksUrl = process.env.JWKS_URL!;
+const audience = process.env.AUDIENCE!;
+const issuer = process.env.ISSUER!;
+
+/**
+ * Lambda AuthorizerのEventからTokenを取得する
+ * @param event
+ */
 const getToken = (event: LambdaAuthorizerEvent): string => {
-    const tokenString = event.authorizationToken;
-    if (!tokenString) {
-        throw new InvalidAuthHeaderNotFoundError();
-    }
-    const match = tokenString.match(/^Bearer (.*)$/);
-    if (!match || match.length < 2) {
-        throw new InvalidAuthHeaderError(tokenString);
-    }
-    return match[1];
+  const tokenString = event.authorizationToken;
+  if (!tokenString) {
+    throw new UnauthorizedApiGwError();
+  }
+  const match = tokenString.match(/^Bearer (.*)$/);
+  if (!match || match.length < 2) {
+    throw new UnauthorizedApiGwError();
+  }
+  return match[1];
 };
 
-const info: OidcInfo = JSON.parse(process.env.oidcInfo!);
-const jwksUrl = info.jwksUrl;
-
+/**
+ * API Gatewayのexecuteを許可するポリシーを生成する
+ */
 const generateAllowPolicy = (
-    principalId: string,
-    token: string,
-    organizationId: string,
+  principalId: string,
+  token: string,
 ): LambdaAuthorizerResponse => {
-    return {
-        principalId,
-        policyDocument: {
-            Version: '2012-10-17',
-            Statement: [
-                {
-                    Action: 'execute-api:Invoke',
-                    Effect: 'Allow',
-                    Resource: `*`,
-                },
-            ],
+  return {
+    principalId,
+    policyDocument: {
+      Version: '2012-10-17',
+      Statement: [
+        {
+          Action: 'execute-api:Invoke',
+          Effect: 'Allow',
+          Resource: '*',
         },
-        context: {
-            token,
-            organizationId,
-        },
-    };
+      ],
+    },
+    context: {
+      token,
+    },
+  };
 };
 
+/**
+ * API Gatewayのexecuteを拒否するポリシーを生成する
+ */
 const generateDenyPolicy = (error: Error): LambdaAuthorizerResponse => {
-    return {
-        principalId: '*',
-        policyDocument: {
-            Version: '2012-10-17',
-            Statement: [
-                {
-                    Action: 'execute-api:Invoke',
-                    Effect: 'Deny',
-                    Resource: '*',
-                },
-            ],
+  return {
+    principalId: '*',
+    policyDocument: {
+      Version: '2012-10-17',
+      Statement: [
+        {
+          Action: 'execute-api:Invoke',
+          Effect: 'Deny',
+          Resource: '*',
         },
-        context: {
-            msg: error.message,
-        },
-    };
+      ],
+    },
+    context: {
+      msg: error.message,
+    },
+  };
 };
 
 export async function handler(
-    event: LambdaAuthorizerEvent,
+  event: LambdaAuthorizerEvent,
 ): Promise<LambdaAuthorizerResponse> {
-    try {
-        console.info(JSON.stringify(event));
+  try {
+    console.info(JSON.stringify(event));
+    const token = getToken(event);
+    const decoded = decode(token, { complete: true });
+    console.info(decoded);
 
-        const token = getToken(event);
-        const decoded = decode(token, { complete: true });
-        console.info(decoded);
+    if (!decoded) {
+      return generateDenyPolicy(
+        new InvalidAuthTokenApiGwError(new Error('invalid token')),
+      );
+    }
 
-        if (!decoded) {
-            throw new JsonWebTokenError('invalid token');
-        }
-
-        const client = jwksClient({ jwksUri: jwksUrl });
-        const getSigningKey = promisify(client.getSigningKey);
-        const key = await getSigningKey(decoded.header.kid);
-        const publicKey =
+    const client = new JwksClient({ jwksUri: jwksUrl });
+    const getSigningKey = promisify(client.getSigningKey);
+    const key = await getSigningKey(decoded.header.kid);
+    const publicKey =
             (key as CertSigningKey).publicKey ||
             (key as RsaSigningKey).rsaPublicKey;
-        const res = await verify(token, publicKey as string, {
-            audience: info.audience,
-            issuer: info.issuer,
-        });
-        if (typeof res === 'string') {
-            throw new VerifyTokenError(token, new Error('token verify error'));
-        }
+    const res = await verify(token, publicKey as string, {
+      audience,
+      issuer,
+    }) as ValidToken;
 
-        const allowPolicy = generateAllowPolicy(
-            res!.sub,
-            token,
-            res!['https://www.softbankgift.co.jp/organizationId'],
-        );
-        console.info(JSON.stringify(allowPolicy));
-        return allowPolicy;
-    } catch (e) {
-        console.error(e);
-        if (
-            e instanceof InvalidAuthHeaderNotFoundError ||
-            e instanceof InvalidAuthHeaderError
-        ) {
-            throw new UnauthorizedApiGwError();
-        } else if (e instanceof TokenExpiredError) {
-            const denyPolicy = generateDenyPolicy(
-                new ExpiredAuthTokenApiGwError(e),
-            );
-            console.info(JSON.stringify(denyPolicy));
-            return denyPolicy;
-        } else if (
-            e instanceof JsonWebTokenError ||
-            e instanceof VerifyTokenError
-        ) {
-            const denyPolicy = generateDenyPolicy(
-                new InvalidAuthTokenApiGwError(e),
-            );
-            console.info(JSON.stringify(denyPolicy));
-            return denyPolicy;
-        }
-        throw e;
+    return generateAllowPolicy(
+      res!.sub,
+      token,
+    );
+  } catch (e) {
+    console.error(e);
+    if (e instanceof TokenExpiredError) {
+      return generateDenyPolicy(
+        new ExpiredAuthTokenApiGwError(e),
+      );
     }
+    throw e;
+  }
 }

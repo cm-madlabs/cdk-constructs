@@ -16,14 +16,17 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/aws-logs',
     '@aws-cdk/aws-apigateway',
     '@aws-cdk/aws-iam',
+    '@aws-cdk/aws-lambda',
+    '@aws-cdk/aws-lambda-nodejs',
   ],
-  deps: [
-      'jsonwebtoken',
+  bundledDeps: [
+    'jsonwebtoken',
     'jwks-rsa',
   ],
   devDeps: [
-      '@types/jsonwebtoken'
-  ]
+    '@types/jsonwebtoken',
+    'esbuild',
+  ],
 
   /* AwsCdkConstructLibraryOptions */
   // cdkAssert: true,                                                          /* Install the @aws-cdk/assert library? */

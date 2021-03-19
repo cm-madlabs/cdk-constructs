@@ -6,6 +6,7 @@ Name|Description
 ----|-----------
 [AmplifyConsoleForSpa](#cdk-constructs-amplifyconsoleforspa)|*No description*
 [ApiGatewayRestApi](#cdk-constructs-apigatewayrestapi)|*No description*
+[JwtAuthorizer](#cdk-constructs-jwtauthorizer)|*No description*
 [S3BucketReplicationIamRole](#cdk-constructs-s3bucketreplicationiamrole)|*No description*
 
 
@@ -15,6 +16,7 @@ Name|Description
 ----|-----------
 [IAmplifyConsoleForSpaProps](#cdk-constructs-iamplifyconsoleforspaprops)|*No description*
 [IApiGatewayRestApiProps](#cdk-constructs-iapigatewayrestapiprops)|*No description*
+[IJwtAuthorizer](#cdk-constructs-ijwtauthorizer)|*No description*
 [IS3BucketReplicationIamRoleProps](#cdk-constructs-is3bucketreplicationiamroleprops)|*No description*
 
 
@@ -78,6 +80,37 @@ new ApiGatewayRestApi(scope: Construct, id: string, props: IApiGatewayRestApiPro
 Name | Type | Description 
 -----|------|-------------
 **api** | <code>[RestApi](#aws-cdk-aws-apigateway-restapi)</code> | <span></span>
+
+
+
+## class JwtAuthorizer  <a id="cdk-constructs-jwtauthorizer"></a>
+
+
+
+__Implements__: [IConstruct](#constructs-iconstruct), [IConstruct](#aws-cdk-core-iconstruct), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable)
+__Extends__: [Construct](#aws-cdk-core-construct)
+
+### Initializer
+
+
+
+
+```ts
+new JwtAuthorizer(scope: Construct, id: string, props: IJwtAuthorizer)
+```
+
+* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
+* **id** (<code>string</code>)  *No description*
+* **props** (<code>[IJwtAuthorizer](#cdk-constructs-ijwtauthorizer)</code>)  *No description*
+
+
+
+### Properties
+
+
+Name | Type | Description 
+-----|------|-------------
+**authorizer** | <code>[Function](#aws-cdk-aws-lambda-function)</code> | <span></span>
 
 
 
@@ -147,6 +180,23 @@ Name | Type | Description
 Name | Type | Description 
 -----|------|-------------
 **apiName** | <code>string</code> | <span></span>
+
+
+
+## interface IJwtAuthorizer  <a id="cdk-constructs-ijwtauthorizer"></a>
+
+
+
+
+### Properties
+
+
+Name | Type | Description 
+-----|------|-------------
+**audience** | <code>string</code> | <span></span>
+**functionName** | <code>string</code> | <span></span>
+**issuer** | <code>string</code> | <span></span>
+**jwksUrl** | <code>string</code> | <span></span>
 
 
 
