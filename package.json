@@ -1,5 +1,5 @@
 {
-  "name": "cdk-constructs",
+  "name": "@cm-madlabs/cdk-constructs",
   "description": "AWS CDK Constructs that can be used universally by MAD teams.",
   "repository": {
     "type": "git",
@@ -90,9 +90,15 @@
     "cdk",
     "cdk-constructs"
   ],
+  "engines": {
+    "node": ">= 10.17.0"
+  },
   "main": "lib/index.js",
   "license": "Apache-2.0",
   "version": "0.0.3",
+  "publishConfig": {
+    "access": "public"
+  },
   "jest": {
     "testMatch": [
       "**/__tests__/**/*.ts?(x)",
