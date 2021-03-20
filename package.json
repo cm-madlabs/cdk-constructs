@@ -25,10 +25,9 @@
     "docgen": "npx projen docgen"
   },
   "author": {
-    "name": "sato.naoya",
-    "email": "sato.naoya@classmethod.jp",
+    "name": "classmethod",
     "url": "https://classmethod.jp/services/mad",
-    "organization": "classmethod"
+    "organization": false
   },
   "devDependencies": {
     "@aws-cdk/assert": "^1.x",

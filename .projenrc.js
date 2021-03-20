@@ -1,10 +1,8 @@
 const { AwsCdkConstructLibrary } = require('projen');
 
 const project = new AwsCdkConstructLibrary({
-  author: 'sato.naoya',
-  authorEmail: 'sato.naoya@classmethod.jp',
+  author: 'classmethod',
   authorUrl: 'https://classmethod.jp/services/mad',
-  authorOrganization: 'classmethod',
   cdkVersion: '1.x',
   defaultReleaseBranch: 'main',
   jsiiFqn: 'projen.AwsCdkConstructLibrary',
@@ -13,8 +11,8 @@ const project = new AwsCdkConstructLibrary({
   description: 'AWS CDK Constructs that can be used universally by MAD teams.',
   artifactsDirectory: 'dist',
   keywords: [
-      'cdk',
-      'cdk-constructs',
+    'cdk',
+    'cdk-constructs',
   ],
   cdkAssert: true,
   cdkDependencies: [
