@@ -1,13 +1,19 @@
 const { AwsCdkConstructLibrary } = require('projen');
 
 const project = new AwsCdkConstructLibrary({
-  author: 'sato.naoya',
-  authorAddress: 'sato.naoya@classmethod.jp',
-  cdkVersion: '1.94.1',
+  author: 'classmethod',
+  authorUrl: 'https://classmethod.jp/services/mad',
+  cdkVersion: '1.x',
   defaultReleaseBranch: 'main',
   jsiiFqn: 'projen.AwsCdkConstructLibrary',
   name: 'cdk-constructs',
   repositoryUrl: 'https://github.com/cm-madlabs/cdk-constructs.git',
+  description: 'AWS CDK Constructs that can be used universally by MAD teams.',
+  artifactsDirectory: 'dist',
+  keywords: [
+    'cdk',
+    'cdk-constructs',
+  ],
   cdkAssert: true,
   cdkDependencies: [
     '@aws-cdk/core',
@@ -30,6 +36,7 @@ const project = new AwsCdkConstructLibrary({
     '@types/jsonwebtoken',
     'esbuild',
   ],
+  scripts: {},
 
   /* AwsCdkConstructLibraryOptions */
   // cdkAssert: true,                                                          /* Install the @aws-cdk/assert library? */
