@@ -117,7 +117,17 @@
       "type": "peer"
     },
     {
+      "name": "@aws-cdk/aws-glue",
+      "version": "^1.94.1",
+      "type": "peer"
+    },
+    {
       "name": "@aws-cdk/aws-iam",
+      "version": "^1.94.1",
+      "type": "peer"
+    },
+    {
+      "name": "@aws-cdk/aws-kinesisfirehose",
       "version": "^1.94.1",
       "type": "peer"
     },
@@ -133,6 +143,11 @@
     },
     {
       "name": "@aws-cdk/aws-logs",
+      "version": "^1.94.1",
+      "type": "peer"
+    },
+    {
+      "name": "@aws-cdk/aws-s3",
       "version": "^1.94.1",
       "type": "peer"
     },
@@ -162,7 +177,17 @@
       "type": "runtime"
     },
     {
+      "name": "@aws-cdk/aws-glue",
+      "version": "^1.94.1",
+      "type": "runtime"
+    },
+    {
       "name": "@aws-cdk/aws-iam",
+      "version": "^1.94.1",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-cdk/aws-kinesisfirehose",
       "version": "^1.94.1",
       "type": "runtime"
     },
@@ -178,6 +203,11 @@
     },
     {
       "name": "@aws-cdk/aws-logs",
+      "version": "^1.94.1",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-cdk/aws-s3",
       "version": "^1.94.1",
       "type": "runtime"
     },

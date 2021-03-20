@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`S3BucketReplicationIamRole default 1`] = `
+Object {
+  "Resources": Object {
+    "testD609C01D": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "s3.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "Policies": Array [
+          Object {
+            "PolicyDocument": Object {
+              "Statement": Array [
+                Object {
+                  "Action": Array [
+                    "s3:ListBucket",
+                    "s3:GetReplicationConfiguration",
+                    "s3:GetObjectVersionForReplication",
+                    "s3:GetObjectVersionAcl",
+                    "s3:GetObjectVersionTagging",
+                    "s3:GetObjectRetention",
+                    "s3:GetObjectLegalHold",
+                  ],
+                  "Effect": "Allow",
+                  "Resource": Array [
+                    "test-base-role",
+                    "test-base-role/*",
+                    "test-source-role",
+                    "test-source-role/*",
+                  ],
+                },
+                Object {
+                  "Action": Array [
+                    "s3:ReplicateObject",
+                    "s3:ReplicateDelete",
+                    "s3:ReplicateTags",
+                    "s3:ObjectOwnerOverrideToBucketOwner",
+                  ],
+                  "Effect": "Allow",
+                  "Resource": Array [
+                    "test-base-role/*",
+                    "test-source-role/*",
+                  ],
+                },
+              ],
+              "Version": "2012-10-17",
+            },
+            "PolicyName": "couponServicePolicy",
+          },
+        ],
+        "RoleName": "test-role-name",
+      },
+      "Type": "AWS::IAM::Role",
+    },
+  },
+}
+`;

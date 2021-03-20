@@ -2,18 +2,18 @@ import * as iam from '@aws-cdk/aws-iam';
 import * as cdk from '@aws-cdk/core';
 
 export interface IS3BucketReplicationIamRoleProps {
-  roleName: string;
-  baseBucketArn: string;
-  sourceBucketArn: string;
+  readonly roleName: string;
+  readonly baseBucketArn: string;
+  readonly sourceBucketArn: string;
 }
 
 export class S3BucketReplicationIamRole extends cdk.Construct {
-  public replicationRole: iam.Role;
+  public readonly role: iam.Role;
 
   constructor(scope: cdk.Construct, id: string, props: IS3BucketReplicationIamRoleProps) {
     super(scope, id);
 
-    this.replicationRole = new iam.Role(this, id, {
+    this.role = new iam.Role(this, id, {
       roleName: props.roleName,
       assumedBy: new iam.ServicePrincipal('s3.amazonaws.com'),
       inlinePolicies: {

@@ -240,6 +240,18 @@
     "@aws-cdk/core" "1.94.1"
     constructs "^3.2.0"
 
+"@aws-cdk/aws-glue@^1.94.1":
+  version "1.94.1"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-glue/-/aws-glue-1.94.1.tgz#a575c32dad4af591d6cb69fad4075e62c4622f7c"
+  integrity sha512-dKAKInhO5mutWoTyYQ7meYyVDXLPhJQJJ2JR2gHvdfFISID3S0mmIgNrjsVgl6RZE90NAZzFGwdB+a1XUN9Rpw==
+  dependencies:
+    "@aws-cdk/aws-ec2" "1.94.1"
+    "@aws-cdk/aws-iam" "1.94.1"
+    "@aws-cdk/aws-kms" "1.94.1"
+    "@aws-cdk/aws-s3" "1.94.1"
+    "@aws-cdk/core" "1.94.1"
+    constructs "^3.2.0"
+
 "@aws-cdk/aws-iam@1.94.1", "@aws-cdk/aws-iam@^1.94.1":
   version "1.94.1"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-iam/-/aws-iam-1.94.1.tgz#c3e2fc3d3e61b0630627e5dee97393f9036d26db"
@@ -247,6 +259,14 @@
   dependencies:
     "@aws-cdk/core" "1.94.1"
     "@aws-cdk/region-info" "1.94.1"
+    constructs "^3.2.0"
+
+"@aws-cdk/aws-kinesisfirehose@^1.94.1":
+  version "1.94.1"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-kinesisfirehose/-/aws-kinesisfirehose-1.94.1.tgz#55fb1fcc73ac2621b52300506f6d2ecc0debbfc6"
+  integrity sha512-IoJ6dxjJixMrnQyee1yiZ05J0TjoHnHvBNdMIawkxKGdl/uUTN8y0lvW1zV+8FqFbjuEi3Tp1FYiCk6KjHkWEA==
+  dependencies:
+    "@aws-cdk/core" "1.94.1"
     constructs "^3.2.0"
 
 "@aws-cdk/aws-kms@1.94.1":
@@ -330,7 +350,7 @@
     "@aws-cdk/cx-api" "1.94.1"
     constructs "^3.2.0"
 
-"@aws-cdk/aws-s3@1.94.1":
+"@aws-cdk/aws-s3@1.94.1", "@aws-cdk/aws-s3@^1.94.1":
   version "1.94.1"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-s3/-/aws-s3-1.94.1.tgz#9c01b16d6d5d442830265000b82944c214616766"
   integrity sha512-9Ggl7Zgp9ZXSri8yB/RUDgK3YxM4oa/8I1STGc9hGaN6lniZhplJab9dsccVGy458HjnKPeP86OeWcbWgH7PWQ==

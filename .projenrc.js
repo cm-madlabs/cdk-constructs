@@ -18,6 +18,9 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/aws-iam',
     '@aws-cdk/aws-lambda',
     '@aws-cdk/aws-lambda-nodejs',
+    '@aws-cdk/aws-s3',
+    '@aws-cdk/aws-kinesisfirehose',
+    '@aws-cdk/aws-glue',
   ],
   bundledDeps: [
     'jsonwebtoken',

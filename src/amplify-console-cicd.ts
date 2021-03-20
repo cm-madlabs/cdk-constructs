@@ -2,15 +2,11 @@ import * as amplify from '@aws-cdk/aws-amplify';
 import { BuildSpec } from '@aws-cdk/aws-codebuild';
 import * as cdk from '@aws-cdk/core';
 
-type IsBasicAuth = boolean;
-type BasicAuthSecretId<T> = T extends true ? string : never;
-type BasicAuthUserName<T> = T extends true ? string : never;
-
 export interface IAmplifyConsoleForSpaProps {
   readonly amplifyAppName: string;
-  readonly isBasicAuth: IsBasicAuth;
-  readonly basicAuthSecretId: BasicAuthSecretId<IsBasicAuth>;
-  readonly basicAuthUserName: BasicAuthUserName<IsBasicAuth>;
+  readonly isBasicAuth: boolean;
+  readonly basicAuthSecretId: string;
+  readonly basicAuthUserName: string;
   readonly githubTokenSecretId: string;
   readonly githubOwner: string;
   readonly githubRepo: string;
@@ -20,8 +16,8 @@ export interface IAmplifyConsoleForSpaProps {
   readonly baseDirectory: string;
 }
 
-export class AmplifyConsoleForSpa extends cdk.Construct {
-  public amplify: amplify.App;
+export class AmplifyConsoleCiCd extends cdk.Construct {
+  public readonly amplify: amplify.App;
 
   constructor(scope: cdk.Construct, id: string, props: IAmplifyConsoleForSpaProps) {
     super(scope, id);
