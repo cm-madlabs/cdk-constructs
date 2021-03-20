@@ -1,5 +1,6 @@
 {
   "name": "cdk-constructs",
+  "description": "AWS CDK Constructs that can be used universally by MAD teams.",
   "repository": {
     "type": "git",
     "url": "https://github.com/cm-madlabs/cdk-constructs.git"
@@ -26,10 +27,11 @@
   "author": {
     "name": "sato.naoya",
     "email": "sato.naoya@classmethod.jp",
-    "organization": false
+    "url": "https://classmethod.jp/services/mad",
+    "organization": "classmethod"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "^1.94.1",
+    "@aws-cdk/assert": "^1.x",
     "@types/jest": "^26.0.21",
     "@types/jsonwebtoken": "^8.5.1",
     "@types/node": "^10.17.0",
@@ -53,31 +55,31 @@
     "typescript": "^4.2.3"
   },
   "peerDependencies": {
-    "@aws-cdk/aws-amplify": "^1.94.1",
-    "@aws-cdk/aws-apigateway": "^1.94.1",
-    "@aws-cdk/aws-codebuild": "^1.94.1",
-    "@aws-cdk/aws-glue": "^1.94.1",
-    "@aws-cdk/aws-iam": "^1.94.1",
-    "@aws-cdk/aws-kinesisfirehose": "^1.94.1",
-    "@aws-cdk/aws-lambda": "^1.94.1",
-    "@aws-cdk/aws-lambda-nodejs": "^1.94.1",
-    "@aws-cdk/aws-logs": "^1.94.1",
-    "@aws-cdk/aws-s3": "^1.94.1",
-    "@aws-cdk/core": "^1.94.1",
+    "@aws-cdk/aws-amplify": "^1.x",
+    "@aws-cdk/aws-apigateway": "^1.x",
+    "@aws-cdk/aws-codebuild": "^1.x",
+    "@aws-cdk/aws-glue": "^1.x",
+    "@aws-cdk/aws-iam": "^1.x",
+    "@aws-cdk/aws-kinesisfirehose": "^1.x",
+    "@aws-cdk/aws-lambda": "^1.x",
+    "@aws-cdk/aws-lambda-nodejs": "^1.x",
+    "@aws-cdk/aws-logs": "^1.x",
+    "@aws-cdk/aws-s3": "^1.x",
+    "@aws-cdk/core": "^1.x",
     "constructs": "^3.2.27"
   },
   "dependencies": {
-    "@aws-cdk/aws-amplify": "^1.94.1",
-    "@aws-cdk/aws-apigateway": "^1.94.1",
-    "@aws-cdk/aws-codebuild": "^1.94.1",
-    "@aws-cdk/aws-glue": "^1.94.1",
-    "@aws-cdk/aws-iam": "^1.94.1",
-    "@aws-cdk/aws-kinesisfirehose": "^1.94.1",
-    "@aws-cdk/aws-lambda": "^1.94.1",
-    "@aws-cdk/aws-lambda-nodejs": "^1.94.1",
-    "@aws-cdk/aws-logs": "^1.94.1",
-    "@aws-cdk/aws-s3": "^1.94.1",
-    "@aws-cdk/core": "^1.94.1",
+    "@aws-cdk/aws-amplify": "^1.x",
+    "@aws-cdk/aws-apigateway": "^1.x",
+    "@aws-cdk/aws-codebuild": "^1.x",
+    "@aws-cdk/aws-glue": "^1.x",
+    "@aws-cdk/aws-iam": "^1.x",
+    "@aws-cdk/aws-kinesisfirehose": "^1.x",
+    "@aws-cdk/aws-lambda": "^1.x",
+    "@aws-cdk/aws-lambda-nodejs": "^1.x",
+    "@aws-cdk/aws-logs": "^1.x",
+    "@aws-cdk/aws-s3": "^1.x",
+    "@aws-cdk/core": "^1.x",
     "jsonwebtoken": "^8.5.1",
     "jwks-rsa": "^2.0.1"
   },
@@ -86,7 +88,8 @@
     "jwks-rsa"
   ],
   "keywords": [
-    "cdk"
+    "cdk",
+    "cdk-constructs"
   ],
   "main": "lib/index.js",
   "license": "Apache-2.0",

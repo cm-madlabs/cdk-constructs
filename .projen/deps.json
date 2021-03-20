@@ -2,7 +2,7 @@
   "dependencies": [
     {
       "name": "@aws-cdk/assert",
-      "version": "^1.94.1",
+      "version": "^1.x",
       "type": "build"
     },
     {
@@ -103,57 +103,57 @@
     },
     {
       "name": "@aws-cdk/aws-amplify",
-      "version": "^1.94.1",
+      "version": "^1.x",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-apigateway",
-      "version": "^1.94.1",
+      "version": "^1.x",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-codebuild",
-      "version": "^1.94.1",
+      "version": "^1.x",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-glue",
-      "version": "^1.94.1",
+      "version": "^1.x",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-iam",
-      "version": "^1.94.1",
+      "version": "^1.x",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-kinesisfirehose",
-      "version": "^1.94.1",
+      "version": "^1.x",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-lambda-nodejs",
-      "version": "^1.94.1",
+      "version": "^1.x",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-lambda",
-      "version": "^1.94.1",
+      "version": "^1.x",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-logs",
-      "version": "^1.94.1",
+      "version": "^1.x",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-s3",
-      "version": "^1.94.1",
+      "version": "^1.x",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/core",
-      "version": "^1.94.1",
+      "version": "^1.x",
       "type": "peer"
     },
     {
@@ -163,57 +163,57 @@
     },
     {
       "name": "@aws-cdk/aws-amplify",
-      "version": "^1.94.1",
+      "version": "^1.x",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-apigateway",
-      "version": "^1.94.1",
+      "version": "^1.x",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-codebuild",
-      "version": "^1.94.1",
+      "version": "^1.x",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-glue",
-      "version": "^1.94.1",
+      "version": "^1.x",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-iam",
-      "version": "^1.94.1",
+      "version": "^1.x",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-kinesisfirehose",
-      "version": "^1.94.1",
+      "version": "^1.x",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-lambda-nodejs",
-      "version": "^1.94.1",
+      "version": "^1.x",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-lambda",
-      "version": "^1.94.1",
+      "version": "^1.x",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-logs",
-      "version": "^1.94.1",
+      "version": "^1.x",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-s3",
-      "version": "^1.94.1",
+      "version": "^1.x",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/core",
-      "version": "^1.94.1",
+      "version": "^1.x",
       "type": "runtime"
     }
   ],
