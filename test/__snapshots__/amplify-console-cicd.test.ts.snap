@@ -33,6 +33,11 @@ Object {
         \\"commands\\": [
           \\"env\\"
         ]
+      },
+      \\"postBuild\\": {
+        \\"commands\\": [
+          \\"env\\"
+        ]
       }
     },
     \\"artifacts\\": {

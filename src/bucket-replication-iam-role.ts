@@ -7,7 +7,7 @@ export interface IS3BucketReplicationIamRoleProps {
   readonly sourceBucketArn: string;
 }
 
-export class S3BucketReplicationIamRole extends cdk.Construct {
+export class BucketReplicationIamRole extends cdk.Construct {
   public readonly role: iam.Role;
 
   constructor(scope: cdk.Construct, id: string, props: IS3BucketReplicationIamRoleProps) {

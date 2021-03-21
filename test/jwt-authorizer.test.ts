@@ -1,6 +1,6 @@
 import { SynthUtils } from '@aws-cdk/assert';
 import * as cdk from '@aws-cdk/core';
-import { JwtAuthorizer } from '../src/jwt-authorizer';
+import { JwtAuthorizer } from '../src';
 
 describe('JwtAuthorizer', () => {
   test('default', () => {

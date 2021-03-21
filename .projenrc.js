@@ -16,6 +16,8 @@ const project = new AwsCdkConstructLibrary({
   projectType: ProjectType.LIB,
   npmAccess: NpmAccess.PUBLIC,
   cdkAssert: true,
+  licensed: true,
+  license: 'MIT',
   gitignore: ['.idea'],
   keywords: [
     'cdk',

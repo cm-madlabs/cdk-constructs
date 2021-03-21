@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReplicationDestinationBucket default 1`] = `
+Object {
+  "Resources": Object {
+    "testD609C01D": Object {
+      "DeletionPolicy": "Retain",
+      "Properties": Object {
+        "BucketName": "test",
+        "VersioningConfiguration": Object {
+          "Status": "Enabled",
+        },
+      },
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "testPolicy42064509": Object {
+      "Properties": Object {
+        "Bucket": Object {
+          "Ref": "testD609C01D",
+        },
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": Array [
+                "s3:ReplicateObject",
+                "s3:ReplicateDelete",
+                "s3:ReplicateTags",
+                "s3:ObjectOwnerOverrideToBucketOwner",
+                "s3:GetObjectVersionTagging",
+              ],
+              "Effect": "Allow",
+              "Principal": Object {
+                "AWS": "test",
+              },
+              "Resource": "test/*",
+              "Sid": "1",
+            },
+            Object {
+              "Action": Array [
+                "s3:GetBucketVersioning",
+                "s3:PutBucketVersioning",
+              ],
+              "Effect": "Allow",
+              "Principal": Object {
+                "AWS": "test",
+              },
+              "Resource": "test",
+              "Sid": "2",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::S3::BucketPolicy",
+    },
+  },
+}
+`;

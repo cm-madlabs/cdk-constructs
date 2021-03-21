@@ -1,7 +1,7 @@
 import { SynthUtils } from '@aws-cdk/assert';
 import { Schema } from '@aws-cdk/aws-glue';
 import * as cdk from '@aws-cdk/core';
-import { FirehoseS3Athena } from '../src/kinesisfirehose-s3-athena';
+import { FirehoseS3Athena } from '../src';
 
 describe('KinesisFirehoseS3Athena', () => {
   test('default', () => {

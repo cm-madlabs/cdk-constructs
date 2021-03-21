@@ -1,6 +1,6 @@
 import { SynthUtils } from '@aws-cdk/assert';
 import * as cdk from '@aws-cdk/core';
-import { AmplifyConsoleCiCd } from '../src/amplify-console-cicd';
+import { AmplifyConsoleCiCd } from '../src';
 
 describe('AmplifyConsoleHosting', () => {
   test('default', () => {
@@ -16,6 +16,7 @@ describe('AmplifyConsoleHosting', () => {
       isAutoBuild: true,
       preBuildCommands: ['env'],
       buildCommands: ['env'],
+      postBuildCommands: ['env'],
       baseDirectory: './',
     });
     expect(SynthUtils.toCloudFormation(stack)).toMatchSnapshot();

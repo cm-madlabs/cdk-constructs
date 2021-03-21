@@ -9,14 +9,17 @@ import {
 } from '@aws-cdk/aws-apigateway';
 import { IFunction } from '@aws-cdk/aws-lambda';
 
+/**
+ * CDKでAPI Gatewayを定義するために、汎用的に使えるUtil関数
+ */
 export class ApiGatewayUtil {
   /**
-   * REST 1件取得する GET Method を作成する
+   * REST 単一リソースを取得する GET メソッドを作成する
    * ex GET /users/{id}
    * @param resource
    * @param fn
    */
-  public static addSingleGetMethod(resource: Resource, fn: IFunction): Method {
+  public static createRestSingleGetMethod(resource: Resource, fn: IFunction): Method {
     const integration = new LambdaIntegration(
       fn,
       {
@@ -47,12 +50,12 @@ export class ApiGatewayUtil {
   }
 
   /**
-   * querystring で複数件取得する GET Method を作成する
+   * Querystring で複数リソースを取得する GET メソッドを作成する
    * ex GET /users?name=xxx&limit=10&next_token=xxx
    * @param resource
    * @param fn
    */
-  public static addQueryGetMethod(resource: Resource, fn: IFunction): Method {
+  public static createQueryGetMethod(resource: Resource, fn: IFunction): Method {
     const integration = new LambdaIntegration(
       fn,
       {
@@ -93,7 +96,10 @@ export class ApiGatewayUtil {
     });
   }
 
-  private static corsResponseHeader(): { [destination: string]: boolean } {
+  /**
+   * API GatewayのCORSレスポンスヘッダーを返却する
+   */
+  public static corsResponseHeader(): { [destination: string]: boolean } {
     return {
       'method.response.header.Access-Control-Allow-Headers': true,
       'method.response.header.Access-Control-Allow-Methods': true,
@@ -101,7 +107,10 @@ export class ApiGatewayUtil {
     };
   }
 
-  private static corsHeaderIntegration(): { [destination: string]: string } {
+  /**
+   * API Gatewayの統合のCORSレスポンスヘッダーを返却する
+   */
+  public static corsHeaderIntegration(): { [destination: string]: string } {
     return {
       'method.response.header.Access-Control-Allow-Headers':
           "'Origin,Content-Type,Authorization'",
@@ -111,7 +120,11 @@ export class ApiGatewayUtil {
     };
   }
 
-  private static commonMethodIntegrationResponse(defaultResponse: IntegrationResponse): IntegrationResponse[] {
+  /**
+   * API Gatewayの統合レスポンス
+   * @param defaultResponse
+   */
+  public static commonMethodIntegrationResponse(defaultResponse: IntegrationResponse): IntegrationResponse[] {
     return [
       defaultResponse,
       {
@@ -153,7 +166,10 @@ export class ApiGatewayUtil {
     ];
   }
 
-  private static commonMethodOptionsResponse(): MethodResponse[] {
+  /**
+   * API Gatewayのメソッドレスポンスを定義
+   */
+  public static commonMethodOptionsResponse(): MethodResponse[] {
     return [
       {
         statusCode: '200',
