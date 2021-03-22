@@ -74,7 +74,7 @@ export class AmplifyConsoleCiCd extends cdk.Construct {
   constructor(scope: cdk.Construct, id: string, props: IAmplifyConsoleForSpaProps) {
     super(scope, id);
 
-    this.amplify = new amplify.App(this, id, {
+    this.amplify = new amplify.App(this, 'App', {
       appName: props.amplifyAppName,
       buildSpec: BuildSpec.fromObject({
         version: 1,

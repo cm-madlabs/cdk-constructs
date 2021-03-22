@@ -54,48 +54,38 @@ export class FirehoseS3Athena extends cdk.Construct {
   constructor(scope: cdk.Construct, id: string, props: IFirehoseS3Athena) {
     super(scope, id);
 
-    this.bucket = new Bucket(this, `${id}-Bucket`, {
+    this.bucket = new Bucket(this, 'Bucket', {
       bucketName: props.bucketName,
     });
 
-    this.firehoseRole = new Role(
-      this,
-      `${id}-Role`,
-      {
-        roleName: props.roleName,
-        assumedBy: new ServicePrincipal('firehose.amazonaws.com'),
-        managedPolicies: [
-          ManagedPolicy.fromAwsManagedPolicyName(
-            'AmazonS3FullAccess',
-          ),
-        ],
-      },
-    );
+    this.firehoseRole = new Role(this, 'Role', {
+      roleName: props.roleName,
+      assumedBy: new ServicePrincipal('firehose.amazonaws.com'),
+      managedPolicies: [
+        ManagedPolicy.fromAwsManagedPolicyName('AmazonS3FullAccess'),
+      ],
+    });
 
-    this.delivery = new CfnDeliveryStream(
-      this,
-      `${id}-Delivery`,
-      {
-        deliveryStreamName: props.deliveryStreamName,
-        deliveryStreamType: 'DirectPut',
-        s3DestinationConfiguration: {
-          bucketArn: this.bucket.bucketArn,
-          prefix: props.prefix,
-          bufferingHints: {
-            intervalInSeconds: 60,
-            sizeInMBs: 5,
-          },
-          compressionFormat: 'GZIP',
-          roleArn: this.firehoseRole.roleArn,
+    this.delivery = new CfnDeliveryStream(this, 'Delivery', {
+      deliveryStreamName: props.deliveryStreamName,
+      deliveryStreamType: 'DirectPut',
+      s3DestinationConfiguration: {
+        bucketArn: this.bucket.bucketArn,
+        prefix: props.prefix,
+        bufferingHints: {
+          intervalInSeconds: 60,
+          sizeInMBs: 5,
         },
+        compressionFormat: 'GZIP',
+        roleArn: this.firehoseRole.roleArn,
       },
-    );
+    });
 
-    this.database = new Database(this, `${id}-Database`, {
+    this.database = new Database(this, 'Database', {
       databaseName: props.databaseName,
     });
 
-    this.table = new Table(this, `${id}-Table`, {
+    this.table = new Table(this, 'Table', {
       database: this.database,
       tableName: props.tableName,
       columns: props.columns,

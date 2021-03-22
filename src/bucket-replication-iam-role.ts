@@ -27,7 +27,7 @@ export class BucketReplicationIamRole extends cdk.Construct {
   constructor(scope: cdk.Construct, id: string, props: IS3BucketReplicationIamRoleProps) {
     super(scope, id);
 
-    this.role = new iam.Role(this, id, {
+    this.role = new iam.Role(this, 'Role', {
       roleName: props.roleName,
       assumedBy: new iam.ServicePrincipal('s3.amazonaws.com'),
       inlinePolicies: {

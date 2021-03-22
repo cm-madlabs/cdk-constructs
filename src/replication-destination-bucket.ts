@@ -22,7 +22,7 @@ export class ReplicationDestinationBucket extends cdk.Construct {
   constructor(scope: cdk.Construct, id: string, props: IReplicationDestinationBucket) {
     super(scope, id);
 
-    this.bucket = new s3.Bucket(this, id, {
+    this.bucket = new s3.Bucket(this, 'Bucket', {
       bucketName: props.bucketName,
       versioned: true,
     });

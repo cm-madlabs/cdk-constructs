@@ -3,7 +3,7 @@
 exports[`S3BucketReplicationIamRole default 1`] = `
 Object {
   "Resources": Object {
-    "testD609C01D": Object {
+    "testRoleA48AD45D": Object {
       "Properties": Object {
         "AssumeRolePolicyDocument": Object {
           "Statement": Array [
