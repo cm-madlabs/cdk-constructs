@@ -3,7 +3,7 @@
 exports[`ReplicationDestinationBucket default 1`] = `
 Object {
   "Resources": Object {
-    "testD609C01D": Object {
+    "testBucket23D1CF2E": Object {
       "DeletionPolicy": "Retain",
       "Properties": Object {
         "BucketName": "test",
@@ -14,10 +14,10 @@ Object {
       "Type": "AWS::S3::Bucket",
       "UpdateReplacePolicy": "Retain",
     },
-    "testPolicy42064509": Object {
+    "testBucketPolicyFE97E2DB": Object {
       "Properties": Object {
         "Bucket": Object {
-          "Ref": "testD609C01D",
+          "Ref": "testBucket23D1CF2E",
         },
         "PolicyDocument": Object {
           "Statement": Array [
@@ -39,7 +39,7 @@ Object {
                   Array [
                     Object {
                       "Fn::GetAtt": Array [
-                        "testD609C01D",
+                        "testBucket23D1CF2E",
                         "Arn",
                       ],
                     },
@@ -60,7 +60,7 @@ Object {
               },
               "Resource": Object {
                 "Fn::GetAtt": Array [
-                  "testD609C01D",
+                  "testBucket23D1CF2E",
                   "Arn",
                 ],
               },

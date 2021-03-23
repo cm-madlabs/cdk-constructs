@@ -1,6 +1,16 @@
-import * as amplify from '@aws-cdk/aws-amplify';
-import { BuildSpec } from '@aws-cdk/aws-codebuild';
-import * as cdk from '@aws-cdk/core';
+import {
+  App,
+  BasicAuth,
+  GitHubSourceCodeProvider,
+  RedirectStatus,
+} from '@aws-cdk/aws-amplify';
+import {
+  BuildSpec,
+} from '@aws-cdk/aws-codebuild';
+import {
+  Construct,
+  SecretValue,
+} from '@aws-cdk/core';
 
 export interface IAmplifyConsoleForSpaProps {
   /**
@@ -68,13 +78,13 @@ export interface IAmplifyConsoleForSpaProps {
  * Amplify ConsoleのCICDを作成するConstruct
  * ReactなどのSPAをホスティングするために利用する
  */
-export class AmplifyConsoleCiCd extends cdk.Construct {
-  public readonly amplify: amplify.App;
+export class AmplifyConsoleCiCd extends Construct {
+  public readonly amplify: App;
 
-  constructor(scope: cdk.Construct, id: string, props: IAmplifyConsoleForSpaProps) {
+  constructor(scope: Construct, id: string, props: IAmplifyConsoleForSpaProps) {
     super(scope, id);
 
-    this.amplify = new amplify.App(this, id, {
+    this.amplify = new App(this, 'App', {
       appName: props.amplifyAppName,
       buildSpec: BuildSpec.fromObject({
         version: 1,
@@ -111,12 +121,12 @@ export class AmplifyConsoleCiCd extends cdk.Construct {
           ],
         },
       }),
-      basicAuth: props.isBasicAuth ? amplify.BasicAuth.fromCredentials(
+      basicAuth: props.isBasicAuth ? BasicAuth.fromCredentials(
         props.basicAuthUserName!,
-        cdk.SecretValue.secretsManager(props.basicAuthSecretId!),
+        SecretValue.secretsManager(props.basicAuthSecretId!),
       ): undefined,
-      sourceCodeProvider: new amplify.GitHubSourceCodeProvider({
-        oauthToken: cdk.SecretValue.secretsManager(props.githubTokenSecretId),
+      sourceCodeProvider: new GitHubSourceCodeProvider({
+        oauthToken: SecretValue.secretsManager(props.githubTokenSecretId),
         owner: props.githubOwner,
         repository: props.githubRepo,
       }),
@@ -129,7 +139,7 @@ export class AmplifyConsoleCiCd extends cdk.Construct {
         {
           source: '</^[^.]+$|\\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf|map|json)$)([^.]+$)/>',
           target: '/index.html',
-          status: amplify.RedirectStatus.REWRITE,
+          status: RedirectStatus.REWRITE,
         },
       ],
     });

@@ -3,7 +3,7 @@
 exports[`AmplifyConsoleHosting default 1`] = `
 Object {
   "Resources": Object {
-    "hosting9EC7671B": Object {
+    "hostingApp4D07B19F": Object {
       "Properties": Object {
         "AutoBranchCreationConfig": Object {
           "AutoBranchCreationPatterns": Array [
@@ -85,7 +85,7 @@ Object {
         ],
         "IAMServiceRole": Object {
           "Fn::GetAtt": Array [
-            "hostingRoleD1A40E44",
+            "hostingAppRole6607E403",
             "Arn",
           ],
         },
@@ -95,7 +95,7 @@ Object {
       },
       "Type": "AWS::Amplify::App",
     },
-    "hostingRoleD1A40E44": Object {
+    "hostingAppRole6607E403": Object {
       "Properties": Object {
         "AssumeRolePolicyDocument": Object {
           "Statement": Array [

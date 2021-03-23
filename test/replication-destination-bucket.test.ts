@@ -1,10 +1,16 @@
-import { SynthUtils } from '@aws-cdk/assert';
-import * as cdk from '@aws-cdk/core';
-import { ReplicationDestinationBucket } from '../src';
+import {
+  SynthUtils,
+} from '@aws-cdk/assert';
+import {
+  Stack,
+} from '@aws-cdk/core';
+import {
+  ReplicationDestinationBucket,
+} from '../src';
 
 describe('ReplicationDestinationBucket', () => {
   test('default', () => {
-    const stack = new cdk.Stack();
+    const stack = new Stack();
 
     new ReplicationDestinationBucket(stack, 'test', {
       bucketName: 'test',
