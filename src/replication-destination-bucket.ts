@@ -1,6 +1,14 @@
-import { ArnPrincipal, Effect, PolicyStatement } from '@aws-cdk/aws-iam';
-import * as s3 from '@aws-cdk/aws-s3';
-import * as cdk from '@aws-cdk/core';
+import {
+  ArnPrincipal,
+  Effect,
+  PolicyStatement,
+} from '@aws-cdk/aws-iam';
+import {
+  Bucket,
+} from '@aws-cdk/aws-s3';
+import {
+  Construct,
+} from '@aws-cdk/core';
 
 export interface IReplicationDestinationBucket {
   /**
@@ -17,12 +25,12 @@ export interface IReplicationDestinationBucket {
 /**
  * レプリケーション先となるS3バケットを作成するConstruct
  */
-export class ReplicationDestinationBucket extends cdk.Construct {
-  public readonly bucket: s3.Bucket;
-  constructor(scope: cdk.Construct, id: string, props: IReplicationDestinationBucket) {
+export class ReplicationDestinationBucket extends Construct {
+  public readonly bucket: Bucket;
+  constructor(scope: Construct, id: string, props: IReplicationDestinationBucket) {
     super(scope, id);
 
-    this.bucket = new s3.Bucket(this, 'Bucket', {
+    this.bucket = new Bucket(this, 'Bucket', {
       bucketName: props.bucketName,
       versioned: true,
     });

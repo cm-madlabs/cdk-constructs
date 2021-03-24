@@ -1,10 +1,16 @@
-import { SynthUtils } from '@aws-cdk/assert';
-import * as cdk from '@aws-cdk/core';
-import { AmplifyConsoleCiCd } from '../src';
+import {
+  SynthUtils,
+} from '@aws-cdk/assert';
+import {
+  Stack,
+} from '@aws-cdk/core';
+import {
+  AmplifyConsoleCiCd,
+} from '../src';
 
 describe('AmplifyConsoleHosting', () => {
   test('default', () => {
-    const stack = new cdk.Stack();
+    const stack = new Stack();
     new AmplifyConsoleCiCd(stack, 'hosting', {
       amplifyAppName: 'test-app',
       isBasicAuth: true,

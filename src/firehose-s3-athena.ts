@@ -1,8 +1,23 @@
-import { Table, Database, Column, DataFormat } from '@aws-cdk/aws-glue';
-import { ManagedPolicy, Role, ServicePrincipal } from '@aws-cdk/aws-iam';
-import { CfnDeliveryStream } from '@aws-cdk/aws-kinesisfirehose';
-import { Bucket } from '@aws-cdk/aws-s3';
-import * as cdk from '@aws-cdk/core';
+import {
+  Column,
+  Database,
+  DataFormat,
+  Table,
+} from '@aws-cdk/aws-glue';
+import {
+  ManagedPolicy,
+  Role,
+  ServicePrincipal,
+} from '@aws-cdk/aws-iam';
+import {
+  CfnDeliveryStream,
+} from '@aws-cdk/aws-kinesisfirehose';
+import {
+  Bucket,
+} from '@aws-cdk/aws-s3';
+import {
+  Construct,
+} from '@aws-cdk/core';
 
 export interface IFirehoseS3Athena {
   /**
@@ -44,14 +59,14 @@ export interface IFirehoseS3Athena {
 /**
  * Kinesis Firehose経由でS3に保存してAthenaでクエリできるようにするConstruct
  */
-export class FirehoseS3Athena extends cdk.Construct {
+export class FirehoseS3Athena extends Construct {
   public readonly bucket: Bucket;
   public readonly firehoseRole: Role;
   public readonly delivery: CfnDeliveryStream;
   public readonly database: Database;
   public readonly table: Table;
 
-  constructor(scope: cdk.Construct, id: string, props: IFirehoseS3Athena) {
+  constructor(scope: Construct, id: string, props: IFirehoseS3Athena) {
     super(scope, id);
 
     this.bucket = new Bucket(this, 'Bucket', {

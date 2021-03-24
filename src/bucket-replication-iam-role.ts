@@ -1,5 +1,13 @@
-import * as iam from '@aws-cdk/aws-iam';
-import * as cdk from '@aws-cdk/core';
+import {
+  Effect,
+  PolicyDocument,
+  PolicyStatement,
+  Role,
+  ServicePrincipal,
+} from '@aws-cdk/aws-iam';
+import {
+  Construct,
+} from '@aws-cdk/core';
 
 export interface IS3BucketReplicationIamRoleProps {
   /**
@@ -21,20 +29,20 @@ export interface IS3BucketReplicationIamRoleProps {
 /**
  * バケットレプリケーションを行うために、レプリケーション元に設定するIAMロールを作成するConstruct
  */
-export class BucketReplicationIamRole extends cdk.Construct {
-  public readonly role: iam.Role;
+export class BucketReplicationIamRole extends Construct {
+  public readonly role: Role;
 
-  constructor(scope: cdk.Construct, id: string, props: IS3BucketReplicationIamRoleProps) {
+  constructor(scope: Construct, id: string, props: IS3BucketReplicationIamRoleProps) {
     super(scope, id);
 
-    this.role = new iam.Role(this, 'Role', {
+    this.role = new Role(this, 'Role', {
       roleName: props.roleName,
-      assumedBy: new iam.ServicePrincipal('s3.amazonaws.com'),
+      assumedBy: new ServicePrincipal('s3.amazonaws.com'),
       inlinePolicies: {
-        bucketReplicationPolicy: new iam.PolicyDocument({
+        bucketReplicationPolicy: new PolicyDocument({
           statements: [
-            new iam.PolicyStatement({
-              effect: iam.Effect.ALLOW,
+            new PolicyStatement({
+              effect: Effect.ALLOW,
               actions: [
                 's3:ListBucket',
                 's3:GetReplicationConfiguration',
@@ -52,8 +60,8 @@ export class BucketReplicationIamRole extends cdk.Construct {
               ],
             }),
 
-            new iam.PolicyStatement({
-              effect: iam.Effect.ALLOW,
+            new PolicyStatement({
+              effect: Effect.ALLOW,
               actions: [
                 's3:ReplicateObject',
                 's3:ReplicateDelete',

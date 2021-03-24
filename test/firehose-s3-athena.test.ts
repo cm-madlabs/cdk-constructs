@@ -1,11 +1,20 @@
-import { SynthUtils } from '@aws-cdk/assert';
-import { Schema } from '@aws-cdk/aws-glue';
-import * as cdk from '@aws-cdk/core';
-import { FirehoseS3Athena } from '../src';
+import {
+  SynthUtils,
+} from '@aws-cdk/assert';
+import {
+  Schema,
+} from '@aws-cdk/aws-glue';
+import {
+  Stack,
+} from '@aws-cdk/core';
+import {
+  FirehoseS3Athena,
+} from '../src';
 
 describe('KinesisFirehoseS3Athena', () => {
   test('default', () => {
-    const stack = new cdk.Stack();
+    const stack = new
+    Stack();
 
     new FirehoseS3Athena(stack, 'test', {
       bucketName: 'test-bucket',
