@@ -10,7 +10,7 @@ const project = new AwsCdkConstructLibrary({
   jsiiFqn: 'projen.AwsCdkConstructLibrary',
   repositoryUrl: 'https://github.com/cm-madlabs/cdk-constructs.git',
   artifactsDirectory: 'dist',
-  releaseToNpm: true,
+  releaseToNpm: false,
   codeCov: true,
   minNodeVersion: '10.17.0',
   projectType: ProjectType.LIB,
@@ -35,14 +35,6 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/aws-s3',
     '@aws-cdk/aws-kinesisfirehose',
     '@aws-cdk/aws-glue',
-  ],
-  bundledDeps: [
-    'jsonwebtoken',
-    'jwks-rsa',
-  ],
-  devDeps: [
-    '@types/jsonwebtoken',
-    'esbuild',
   ],
   scripts: {},
 });

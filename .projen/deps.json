@@ -10,10 +10,6 @@
       "type": "build"
     },
     {
-      "name": "@types/jsonwebtoken",
-      "type": "build"
-    },
-    {
       "name": "@types/node",
       "version": "^10.17.0",
       "type": "build"
@@ -24,10 +20,6 @@
     },
     {
       "name": "@typescript-eslint/parser",
-      "type": "build"
-    },
-    {
-      "name": "esbuild",
       "type": "build"
     },
     {
@@ -92,14 +84,6 @@
     {
       "name": "typescript",
       "type": "build"
-    },
-    {
-      "name": "jsonwebtoken",
-      "type": "bundled"
-    },
-    {
-      "name": "jwks-rsa",
-      "type": "bundled"
     },
     {
       "name": "@aws-cdk/aws-amplify",

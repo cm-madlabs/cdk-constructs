@@ -32,11 +32,9 @@
   "devDependencies": {
     "@aws-cdk/assert": "^1.x",
     "@types/jest": "^26.0.21",
-    "@types/jsonwebtoken": "^8.5.1",
     "@types/node": "^10.17.0",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
-    "esbuild": "^0.9.3",
     "eslint": "^7.22.0",
     "eslint-import-resolver-node": "^0.3.4",
     "eslint-import-resolver-typescript": "^2.4.0",
@@ -78,14 +76,9 @@
     "@aws-cdk/aws-lambda-nodejs": "^1.x",
     "@aws-cdk/aws-logs": "^1.x",
     "@aws-cdk/aws-s3": "^1.x",
-    "@aws-cdk/core": "^1.x",
-    "jsonwebtoken": "^8.5.1",
-    "jwks-rsa": "^2.0.1"
+    "@aws-cdk/core": "^1.x"
   },
-  "bundledDependencies": [
-    "jsonwebtoken",
-    "jwks-rsa"
-  ],
+  "bundledDependencies": [],
   "keywords": [
     "cdk",
     "cdk-constructs"
